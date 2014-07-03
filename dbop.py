@@ -11,7 +11,7 @@ dbname_text="texts"
 st=ItalianStemmer()
 pp = pprint.PrettyPrinter(indent=4)
 def sentiment(timeline):
-    mapping={"Pierferdinando":"c","LegaNord2_0":'d',"angealfa":"d","SenatoreMonti":"c","udctw":"d","matteorenzi":"s","forzasilvioit":"d","scelta_civica":"c","matteosalvinimi":"d","NichiVendola":"s","pdnetwork":"s","sinistraelib":"s","NCD_tweet":"d","forza_italia":"d","Mov5Stelle":"p","beppe_grillo":"p"}
+    mapping={"Pierferdinando":"c","LegaNord2_0":'d',"angealfa":"d","SenatoreMonti":"c","udctw":"d","matteorenzi":"s","forzasilvioit":"d","scelta_civica":"c","matteosalvinimi":"d","NichiVendola":"s","pdnetwork":"s","sinistraelib":"s","NCD_tweet":"d","forza_italia":"d","Mov5Stelle":"p","beppe_grillo":"p","Oscar Giannino":"d"}
     return mapping[timeline]
 
 def tweet2words(coll):
@@ -26,9 +26,9 @@ def tweet2words(coll):
 
     return features
 
-def saveTS(ts):
+def appendToTS(ts):
     trainingSetDB=MongoClient()["polsent"].ts
-    trainingSetDB.remove({})
+
     for w,s in ts:
         d={"words":w,"sentiment":s}
         trainingSetDB.insert(d)
@@ -37,19 +37,33 @@ def readTS():
 
     return [(i['words'],i['sentiment']) for i in trainingSetDB.find()]
 
+def group_read_ts(dim):
+    trainingSetDB=MongoClient()["polsent"].ts
 
+    datas=trainingSetDB.aggregate([{"$group":{"_id":"$sentiment", "words":{"$push":"$words"}}}])
+
+    for i in data:
+
+
+
+
+
+
+
+import random
 if __name__=="__main__":
-    texts=MongoClient()["polsent"].texts
+    texts=MongoClient()["polsent"].giannino
+    #train_set=appendToTS(tweet2words(texts))
+    pp.pprint(group_read_ts(20))
+"""
     train_set=readTS()
-
-
-    test_set=train_set[:500]
-    train_set=train_set[501:]
+    random.shuffle(train_set)
+    test_set=train_set[:2500]
+    train_set=train_set[2501:]
     #classifier=nltk.NaiveBayesClassifier.train(train_set)
     classifier = SklearnClassifier(LinearSVC())
     classifier.train(train_set)
     accuracy=nltk.classify.accuracy(classifier, test_set)
     #res=classifier.classify({w:1 for w in [st.stem(w) for w in nltk.word_tokenize("")]})
 
-    print len(test_set),len(train_set),accuracy
-
+    print len(test_set),len(train_set),accuracy"""
