@@ -10,12 +10,20 @@ import tweetDownloader
 dbname_text="texts"
 st=ItalianStemmer()
 pp = pprint.PrettyPrinter(indent=4)
-def sentiment(timeline):
+PURENESS_THRESHOLD=0.70
+
+def sentmap(timeline):
     mapping={"Pierferdinando":"c","LegaNord2_0":'d',"angealfa":"d","SenatoreMonti":"c","udctw":"d","matteorenzi":"s","forzasilvioit":"d","scelta_civica":"c","matteosalvinimi":"d","NichiVendola":"s","pdnetwork":"s","sinistraelib":"s","NCD_tweet":"d","forza_italia":"d","Mov5Stelle":"p","beppe_grillo":"p","Oscar Giannino":"d","Alba Dorata ":"d","civati":"s","Paolo Ferrero":"s","AlessandroDiBattista":"s","Maurizio Gasparri":"d","Alessandra Mussolini":"d","Stato & Potenza":"s"}
     return mapping[timeline]
 
-def words2sentiment(words):
-    return [(x,sentiment()[timeline]) for x,timeline in words]
+def words2sentiment(words,sentiment=None):
+    if sentiment:
+       return [(x,sentiment) for x,timeline in words]
+
+    else:
+        return [(x,sentmap()[timeline]) for x,timeline in words]
+
+
 
 def coll2words(coll):
     tweets=MongoClient()['polsent'][coll].find({},["data","id","in_reply_to_screen_name",   "in_reply_to_user_id","timeline","user.id"])
@@ -77,10 +85,17 @@ def insertPure(coll_name):
     p=MongoClient()["polsent"]["pures"]
     p.update({},{"$addToSet":{"colls":coll_name}})
 
+def removePure(coll_name):
+
+    p=MongoClient()["polsent"]["pures"]
+    p.update({},{"$pull":{"colls":coll_name}})
+
+
 def addPureFromScreenName(name):
     tweets=tweetDownloader.get_all_tweets(name)
     words=tweet2words(tweets)
-    if is_pure([x for x,y in words]):
+    sentiment,p=pureSentiment([x for x,y in words])
+    if p:
         coll_name=name[:4]+"_p"
         insertPure(coll_name)
     else:
@@ -88,12 +103,19 @@ def addPureFromScreenName(name):
 
     coll=MongoClient()['polsent'][coll_name]
     coll.remove()
-    coll.insert(words)
-from collections import Counter
-def is_pure(words):
-    c=generateClassifier(group_read(15,"ts"))
+    coll.insert([{"words":x[0],"sentiment":sentiment} for x in words])
 
-    return max([float(j)/len(words) for x,j in Counter(c.batch_classify(words)).iteritems()])>0.70
+
+
+from collections import Counter
+def pureSentiment(words):
+    c=generateClassifier(group_read(15,"ts"))
+    sentiments=Counter(c.batch_classify(words))
+    label,sent=max(sentiments.iteritems(),key=lambda x:x[1])
+
+
+    print "Il sentiment di questo account "+label
+    return (label,sent>PURENESS_THRESHOLD)
 
 
 
@@ -110,6 +132,8 @@ def crossvalidation(training,num_folds):
             res.append(accuracy)
     print res
     return sum(res)/len(res)
+
+
 
 def generateClassifier(train_set):
     classifier = SklearnClassifier(LinearSVC())
@@ -138,7 +162,7 @@ import random
 from multiprocessing.pool import ThreadPool
 if __name__=="__main__":
     polsent=MongoClient()["polsent"]
-    insertPure("thzio")
+    addPureFromScreenName("thzio")
     #train_set=appendToTS(tweet2words(polsent["Ale_Mussolini_"]),"ts")
     """def cc(i):
         c= crossvalidation(group_read(i,"ts"),10)
