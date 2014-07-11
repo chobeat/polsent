@@ -73,11 +73,22 @@ def group_tweets(datas,dim):
 
     return [item for sublist in result for item in sublist]
 
+def insertPure(coll_name):
+    p=MongoClient()["polsent"]["pures"]
+    p.update({},{"$addToSet":{"colls":coll_name}})
+
 def addPureFromScreenName(name):
     tweets=tweetDownloader.get_all_tweets(name)
     words=tweet2words(tweets)
     if is_pure([x for x,y in words]):
-        print "pure"
+        coll_name=name[:4]+"_p"
+        insertPure(coll_name)
+    else:
+        coll_name=name[:4]+"_u"
+
+    coll=MongoClient()['polsent'][coll_name]
+    coll.remove()
+    coll.insert(words)
 from collections import Counter
 def is_pure(words):
     c=generateClassifier(group_read(15,"ts"))
@@ -127,7 +138,7 @@ import random
 from multiprocessing.pool import ThreadPool
 if __name__=="__main__":
     polsent=MongoClient()["polsent"]
-    addPureFromScreenName("thzio")
+    insertPure("thzio")
     #train_set=appendToTS(tweet2words(polsent["Ale_Mussolini_"]),"ts")
     """def cc(i):
         c= crossvalidation(group_read(i,"ts"),10)
