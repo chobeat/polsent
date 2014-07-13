@@ -7,6 +7,7 @@ import re
 from sklearn.svm import LinearSVC,SVC,NuSVC
 from nltk.classify.scikitlearn import SklearnClassifier
 import tweetDownloader
+import matplotlib.pyplot as pyplot
 dbname_text="texts"
 st=ItalianStemmer()
 pp = pprint.PrettyPrinter(indent=4)
@@ -157,30 +158,16 @@ def populate_ts():
 
 
 
+
 import collections
 import random
 from multiprocessing.pool import ThreadPool
 if __name__=="__main__":
     polsent=MongoClient()["polsent"]
-    addPureFromScreenName("thzio")
-    #train_set=appendToTS(tweet2words(polsent["Ale_Mussolini_"]),"ts")
-    """def cc(i):
-        c= crossvalidation(group_read(i,"ts"),10)
-        return (i,c)
-    pool=ThreadPool(4)
-    res=pool.map(cc,range(20,50,2))
-    print res"""
-    #populate_ts()
-    """
-    training_set=group_read(15,"ts")
-    #appendToTS(tweet2words("statoepotenza"),"stato")
-    c=generateClassifier(training_set)
 
-    print "len",len(training_set)
-
-    #print c.batch_classify(tweet2words("statoepotenza"))
-    print nltk.classify.accuracy(c,group_read(30,"stato"))
-
+      #print c.batch_classify(tweet2words("statoepotenza"))
+    #print nltk.classify.accuracy(c,group_read(30,"stato"))
+    #group_size_experiment(1,40,10)
     #train_set=group_read(20,"ts")
     #print c
     #populate_ts()
@@ -200,5 +187,3 @@ if __name__=="__main__":
     #classifier=SklearnClassifier(SVC())
     #classifier.train(train_set)
    # print nltk.classify.accuracy(classifier,test_set)
-
-"""

@@ -6,8 +6,6 @@ consumer_key = a_key
 consumer_secret = a_secret
 access_key = c_key
 access_secret = c_secret
-print tweepy.models.Status.parse
-
 def get_all_tweets(screen_name):
 	#Twitter only allows access to a users most recent 3240 tweets with this method
 
