@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath} % Required for some math elements 
+\usepackage[italian]{babel}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\usepackage[style=authortitle-comp,	backend=biber]{biblatex}
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Classificazione di Tweet a tema politico} % Title
+
+\date{\today} % Date for the report
+
+\author{Simone \textsc{Robutti}} % Author name
+\addbibresource{main.bib}
+\begin{document}
+
+\maketitle % Insert the title, author and date
+\begin{center}
+\textsc{Matricola: 823523}
+
+\end{center} 
+
+% If you wish to include an abstract, uncomment the lines below
+% \begin{abstract}
+% Abstract text
+% \end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+\tableofcontents
+
+
+\section{Introduzione ed Obiettivi}
+L'esperimento si propone di generare un classificatore in grado di discernere l'orientamento politico di un utente Twitter basandosi sul contenuto dei suoi Tweet.
+
+Il lavoro si sviluppa partendo dal lavoro e dalle considerazioni di \cite{sides}. La differenza fondamentale con questo lavoro è la natura dei testi classificati: non Tweet ma post di un forum di politica, quindi più lunghi e argomentati e con uno spettro sintattico e semantico più ampio.
+
+Altri lavori simili presi in considerazione sono \cite{pennacchiotti} e \cite{durant} che però per complessità e obiettivi sono lontani da quanto realizzato.
+
+\section{Metodologia e approccio}
+
+\section{Dataset}
+\subsection{Dataset Core}
+\subsection{Dataset Esteso}
+\section{Risultati}
+\section{Spunti di ampliamento}
+
+\nocite{*}
+\printbibliography
+\end{document}
+
