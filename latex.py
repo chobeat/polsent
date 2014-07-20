@@ -6,3 +6,6 @@ def coreTSNames():
 
 def coreSize():
     return core.count()
+
+for i in coreTSNames():
+    print "\\item "+i

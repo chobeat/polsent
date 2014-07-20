@@ -1,0 +1,107 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{durant}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=7ab4efb938d7ac1a8902d5fceaa955a1}{Durant}{D\bibinitperiod}{Kathleen\bibnamedelima T}{K\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3bf9377df5daca2c3fdb31d16227cebe}{Smith}{S\bibinitperiod}{Michael\bibnamedelima D}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=7ab4efb938d7ac1a8902d5fceaa955a1}{Durant}{D\bibinitperiod}{Kathleen\bibnamedelima T}{K\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3bf9377df5daca2c3fdb31d16227cebe}{Smith}{S\bibinitperiod}{Michael\bibnamedelima D}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e95e77389928b5504f59197466ca35a9}
+      \strng{fullhash}{e95e77389928b5504f59197466ca35a9}
+      \field{sortinit}{D}
+      \field{labeltitle}{Mining sentiment classification from political web logs}
+      \field{booktitle}{Proceedings of Workshop on Web Mining and Web Usage Analysis of the 12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (WebKDD-2006), Philadelphia, PA}
+      \field{title}{Mining sentiment classification from political web logs}
+      \field{year}{2006}
+    \endentry
+    \entry{sides}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=b5f625daa27005ce08113fb83ad7267d}{Malouf}{M\bibinitperiod}{Robert}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=95a5442c7d2043aad45c65c060188d71}{Mullen}{M\bibinitperiod}{Tony}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=b5f625daa27005ce08113fb83ad7267d}{Malouf}{M\bibinitperiod}{Robert}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=95a5442c7d2043aad45c65c060188d71}{Mullen}{M\bibinitperiod}{Tony}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Emerald Group Publishing Limited}%
+      }
+      \strng{namehash}{932aa1524eb3781f35b57497d6943603}
+      \strng{fullhash}{932aa1524eb3781f35b57497d6943603}
+      \field{sortinit}{M}
+      \field{labeltitle}{Taking sides: User classification for informal online political discourse}
+      \field{journaltitle}{Internet Research}
+      \field{number}{2}
+      \field{title}{Taking sides: User classification for informal online political discourse}
+      \field{volume}{18}
+      \field{year}{2008}
+      \field{pages}{177\bibrangedash 190}
+    \endentry
+    \entry{pang2008opinion}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=f954c023cbaefd74cfaba0aa87f35048}{Pang}{P\bibinitperiod}{Bo}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c3867d3f1b42ba3f8d7fc573ef12a0ec}{Lee}{L\bibinitperiod}{Lillian}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=f954c023cbaefd74cfaba0aa87f35048}{Pang}{P\bibinitperiod}{Bo}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c3867d3f1b42ba3f8d7fc573ef12a0ec}{Lee}{L\bibinitperiod}{Lillian}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Now Publishers Inc.}%
+      }
+      \strng{namehash}{ccb4b5748f7b899e85593227e587155e}
+      \strng{fullhash}{ccb4b5748f7b899e85593227e587155e}
+      \field{sortinit}{P}
+      \field{labeltitle}{Opinion mining and sentiment analysis}
+      \field{journaltitle}{Foundations and trends in information retrieval}
+      \field{number}{1-2}
+      \field{title}{Opinion mining and sentiment analysis}
+      \field{volume}{2}
+      \field{year}{2008}
+      \field{pages}{1\bibrangedash 135}
+    \endentry
+    \entry{pennacchiotti}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=1def72e6796749f7394b000e81089aed}{Pennacchiotti}{P\bibinitperiod}{Marco}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=94981878cc799b2b04a6ba511cede33e}{Popescu}{P\bibinitperiod}{Ana-Maria}{A\bibinithyphendelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=1def72e6796749f7394b000e81089aed}{Pennacchiotti}{P\bibinitperiod}{Marco}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=94981878cc799b2b04a6ba511cede33e}{Popescu}{P\bibinitperiod}{Ana-Maria}{A\bibinithyphendelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a408c5ab4932902b39e6c37221b31504}
+      \strng{fullhash}{a408c5ab4932902b39e6c37221b31504}
+      \field{sortinit}{P}
+      \field{labeltitle}{A Machine Learning Approach to Twitter User Classification.}
+      \field{journaltitle}{ICWSM}
+      \field{title}{A Machine Learning Approach to Twitter User Classification.}
+      \field{volume}{11}
+      \field{year}{2011}
+      \field{pages}{281\bibrangedash 288}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

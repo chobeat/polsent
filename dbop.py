@@ -32,6 +32,9 @@ def coll2words(coll):
 def tweet2words(tweets):
    #rimuove @ e hashtags
 
+    if isinstance(tweets,basestring):
+
+        tweets=MongoClient()['polsent'][tweets].find()
     def sanitize(s):
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)"," ",s).split())
 
@@ -43,9 +46,8 @@ def appendToTS(ts,from_coll):
 
     trainingSetDB=MongoClient()["polsent"][from_coll]
 
-    for w,s in ts:
-        d={"words":w,"sentiment":s}
-        trainingSetDB.insert(d)
+    for x in ts:
+        trainingSetDB.insert(x)
 def readTS(coll):
     trainingSetDB=MongoClient()["polsent"][coll]
 
@@ -96,6 +98,7 @@ def addPureFromScreenName(name):
     tweets=tweetDownloader.get_all_tweets(name)
     words=tweet2words(tweets)
     sentiment,p=pureSentiment([x for x,y in words])
+    print sentiment,p
     if p:
         coll_name=name[:4]+"_p"
         insertPure(coll_name)
@@ -154,7 +157,7 @@ def populate_ts():
 
     for c in tscoll:
 
-        appendToTS(tweet2words(c),"ts")
+        appendToTS(list(cl[c].find()),"ts")
 
 
 
@@ -164,26 +167,27 @@ import random
 from multiprocessing.pool import ThreadPool
 if __name__=="__main__":
     polsent=MongoClient()["polsent"]
-
+    #addPureFromScreenName("GuidoCrosetto")
       #print c.batch_classify(tweet2words("statoepotenza"))
     #print nltk.classify.accuracy(c,group_read(30,"stato"))
     #group_size_experiment(1,40,10)
     #train_set=group_read(20,"ts")
-    #print c
+
+#    appendToTS(tweet2words("texts"),"texts_f")
     #populate_ts()
     #c=generateClassifier(group_read(20,"ts"))
-    #print nltk.classify.accuracy(c,group_read(10,"ferre"))
+    #print nltk.classify.accuracy(c,group_read(10,"stato"))
     # appendToTS(tweet2words(polsent["civati"]),"ts")
-    #c=generateClassifier(group_read(20,"ts"))
-    #print nltk.classify.accuracy(c,group_read(10,"ferre"))
+    c=generateClassifier(group_read(20,"ts"))
+    print nltk.classify.accuracy(c,group_read(10,"stato"))
 
-   #print crossvalidation(group_read(30,"ts"),10)
+    #print crossvalidation(group_read(20,"ts"),10)
     #test_set=group_read(10,"gaspa")
     #print test_set
     #test_set=[i[0] for i in test_set]
     #train_set=train_set[301:]
     #classifier=nltk.NaiveBayesClassifier.train(train_set)
-    #print "svc"
+
     #classifier=SklearnClassifier(SVC())
     #classifier.train(train_set)
    # print nltk.classify.accuracy(classifier,test_set)

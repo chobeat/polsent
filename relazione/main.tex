@@ -20,6 +20,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass{article}
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath} % Required for some math elements 
 \usepackage[italian]{babel}
@@ -65,12 +66,58 @@ Il lavoro si sviluppa partendo dal lavoro e dalle considerazioni di \cite{sides}
 
 Altri lavori simili presi in considerazione sono \cite{pennacchiotti} e \cite{durant} che però per complessità e obiettivi sono lontani da quanto realizzato.
 
+
 \section{Metodologia e approccio}
 
+Per rappresentare i tweet nello spazio delle features si è scelto di usare un modello bag of words associando ad ogni parola presente o assente un valore binario. Utilizzare il numero di occorrenze di una parola all'interno del tweet è un approccio valutato da \cite{sides} e sconsigliato perché dava risultati leggermente peggiori.
+
+Lo spazio delle etichette è stato poi suddiviso in 4 classi: "Sinistra","Destra", "Centro" e "Populisti". Una divisione in due sole classi ("Sinistra" e "Destra" o "Conservatori" e "Progressisti") mal si prestava a rappresentare lo scenario politico e mediatico italiano odierno. 
+
+Essendo l'informazione presente nel singolo tweet insufficiente, si è scelto per raggruppare i tweet in gruppi di dimensione fissata e determinata empiricamente come documentato in seguito. Inoltre il raggruppamento nel training set non viene fatto in base all'account Twitter che ha generato il Tweet ma semplicemente in base alla classe di appartenenza, in maniera casuale.
+
+Come algoritmo per generare il classificatore viene usata una SVM lineare implementata nel pacchetto "SciKit". Per valutare la correttezza del classificatore viene usata la cross validazione interna 10-fold.
+
 \section{Dataset}
-\subsection{Dataset Core}
-\subsection{Dataset Esteso}
-\section{Risultati}
+
+Il dataset è costituito dai tweet pubblicati da account personali di politici italiani e da account di partito. Sono stati esclusi quegli account che pur essendo di politici, trattano temi non strettamente connessi alla politica italiana. Una possibile raffinazione ulteriore potrebbe essere fatta scremando i singoli tweet non strettamente relativi alla politica utilizzando un classificatore in grado di discernere il topic del tweet. 
+
+L'estrazione e la normalizzazione delle features prevede prima una divisione dei testi in unigrammi su cui viene poi applicato un processo di stemming e di rimozione delle stop words. Per svolgere questa attività è stata utilizzata la libreria NLTK (Natural Language Toolkit).
+
+Gli account scelti per la composizione del dataset per l'esperimento sono i seguenti:
+
+\begin{itemize}
+\item PierferdinandoCasini
+\item Lega Nord 2.0
+\item Angelino Alfano
+\item Mario Monti
+\item Unione di Centro
+\item Matteo Renzi
+\item forzasilvio.it
+\item Scelta Civica
+\item matteo salvini
+\item Nichi Vendola
+\item Partito Democratico
+\item Sinistra E. Libertà
+\item Movimento 5 Stelle 
+\item Nuovo Centrodestra
+\item Beppe Grillo
+\item Forza Italia
+\item Civati
+\item Ferrero Paolo
+
+\end{itemize}
+
+\section{Risultati} 
+
+Per valutare la precisione del classificatore sul dataset sono state eseguiti dei test utilizzando la cross validazione interna 10 fold. Il risultato si è dimostrato pesantemente dipendente dalla dimensione del raggruppamento dei tweet. 
+
+Per valori compresi tra 1 e 10 si rileva una crescita della precisione del classificatore che tende a stabilizzarsi per valori superiori, assestandosi sull'intervallo compreso tra il 98\% e il 99\%.
+
+\includegraphics[width=\linewidth]{grouping.png}
+
+
+
+
 \section{Spunti di ampliamento}
 
 \nocite{*}
