@@ -104,6 +104,7 @@ Gli account scelti per la composizione del dataset per l'esperimento sono i segu
 \item Forza Italia
 \item Civati
 \item Ferrero Paolo
+\item Alessandro Di Battista
 
 \end{itemize}
 
@@ -115,10 +116,24 @@ Per valori compresi tra 1 e 10 si rileva una crescita della precisione del class
 
 \includegraphics[width=\linewidth]{grouping.png}
 
+Meno precisione viene invece rilevata andando a classificare gruppi di tweet di account non presenti nel dataset su cui si apprende. La precisione comunque in molti casi è più che soddisfacente. 
 
+\includegraphics[width=\linewidth]{magdi.png}
 
+\includegraphics[width=\linewidth]{musso.png}
+
+\includegraphics[width=\linewidth]{stato.png}
+
+\includegraphics[width=\linewidth]{maio.png}
 
 \section{Spunti di ampliamento}
+
+Il lavoro sperimentale svolto è limitato all'applicazione di una singola tecnica in maniera estremamente mirata e questo limita notevolmente il campo applicativo e la precisione del classificatore generato. 
+
+Un approccio noto ed usato in diversi studi su questo tema, come in \cite{pennacchiotti}, consiste nell'ampliare il dominio delle features inserendo non solo i testi dei tweet ma anche le informazioni personali e la rete sociale dell'utente da cui è possibile inferire l'orientamento politico. Nel caso di Twitter sarebbe semplice avendo a disposizione pubblicamente tutte queste informazioni in un formato strutturato.
+
+Un altro elemento interessante potrebbe essere l'uso di un classificatore in grado di discernere il topic di un tweet, che vada a migliorare la composizione del dataset per eliminare parte del rumone nel training set e per migliorare le performance nel caso si cercasse di classificare account generici di utenti che trattano altri argomenti diversi dalla politica.
+ 
 
 \nocite{*}
 \printbibliography

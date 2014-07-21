@@ -12,4 +12,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Risultati}{3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Spunti di ampliamento}{4}
+\contentsline {section}{\numberline {5}Spunti di ampliamento}{7}

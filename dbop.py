@@ -167,14 +167,14 @@ import random
 from multiprocessing.pool import ThreadPool
 if __name__=="__main__":
     polsent=MongoClient()["polsent"]
-    #addPureFromScreenName("GuidoCrosetto")
+    addPureFromScreenName("luigidimaio")
       #print c.batch_classify(tweet2words("statoepotenza"))
     #print nltk.classify.accuracy(c,group_read(30,"stato"))
     #group_size_experiment(1,40,10)
     #train_set=group_read(20,"ts")
 
 #    appendToTS(tweet2words("texts"),"texts_f")
-    #populate_ts()
+   # populate_ts()
     #c=generateClassifier(group_read(20,"ts"))
     #print nltk.classify.accuracy(c,group_read(10,"stato"))
     # appendToTS(tweet2words(polsent["civati"]),"ts")
@@ -190,4 +190,4 @@ if __name__=="__main__":
 
     #classifier=SklearnClassifier(SVC())
     #classifier.train(train_set)
-   # print nltk.classify.accuracy(classifier,test_set)
+    print nltk.classify.accuracy(classifier,test_set)

@@ -35,11 +35,10 @@ def plotGroupSizeGraph(filename):
 
     pyplot.xlabel("Grouping size")
     pyplot.ylabel("Accuracy")
-    pyplot.title("Accuracy su test set esterno (Alessandra Mussolini)")
+    pyplot.title("Accuracy su test set esterno (Luigi Di Maio)")
     pyplot.plot(xdata,ydata)
 
     pyplot.savefig(filename)
 
 if __name__=="__main__":
-    #group_size_experiment(1,40,10,acc_wrapper("mussolini"))
-    plotGroupSizeGraph("musso.png")
+    plotGroupSizeGraph("maio.png")
