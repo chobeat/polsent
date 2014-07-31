@@ -75,7 +75,7 @@ Lo spazio delle etichette è stato poi suddiviso in 4 classi: "Sinistra","Destra
 
 Essendo l'informazione presente nel singolo tweet insufficiente, si è scelto per raggruppare i tweet in gruppi di dimensione fissata e determinata empiricamente come documentato in seguito. Inoltre il raggruppamento nel training set non viene fatto in base all'account Twitter che ha generato il Tweet ma semplicemente in base alla classe di appartenenza, in maniera casuale.
 
-Come algoritmo per generare il classificatore viene usata una SVM lineare implementata nel pacchetto "SciKit". Per valutare la correttezza del classificatore viene usata la cross validazione interna 10-fold.
+Come algoritmo per generare il classificatore viene usata una SVM lineare implementata nel pacchetto "SciKit". Per valutare la correttezza del classificatore viene usata la cross validazione esterna 10-fold.
 
 \section{Dataset}
 
@@ -110,7 +110,7 @@ Gli account scelti per la composizione del dataset per l'esperimento sono i segu
 
 \section{Risultati} 
 
-Per valutare la precisione del classificatore sul dataset sono state eseguiti dei test utilizzando la cross validazione interna 10 fold. Il risultato si è dimostrato pesantemente dipendente dalla dimensione del raggruppamento dei tweet. 
+Per valutare la precisione del classificatore sul dataset sono state eseguiti dei test utilizzando la cross validazione esterna 10 fold. Il risultato si è dimostrato pesantemente dipendente dalla dimensione del raggruppamento dei tweet. 
 
 Per valori compresi tra 1 e 10 si rileva una crescita della precisione del classificatore che tende a stabilizzarsi per valori superiori, assestandosi sull'intervallo compreso tra il 98\% e il 99\%.
 
